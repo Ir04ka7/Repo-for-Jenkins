@@ -20,3 +20,11 @@ pipeline {
                 sh 'npm --version'
             }
         }
+
+        stage('Test') {
+            steps {
+                sh 'echo "JENKINS_URL=$JENKINS_URL"'
+            }
+        }
+    }
+}
