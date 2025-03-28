@@ -8,19 +8,22 @@ pipeline {
     stages {
         stage('Prepare') {
             steps {
-                sh 'node -v'
+                sh '''
+                    curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+                    sudo apt install -y nodejs
+                '''
             }
         }
 
         stage('Build') {
             steps {
-                sh 'npm --version'
+                sh 'npm -v'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'echo "JENKINS_URL=$JENKINS_URL"'
+                sh 'echo JENKINS_URL: $JENKINS_URL'
             }
         }
     }
